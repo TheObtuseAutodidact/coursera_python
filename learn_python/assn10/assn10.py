@@ -30,7 +30,6 @@ Enter the sum from the actual data and your Python code below:
 """
 
 import re
-import pdb
 
 fhandle = None
 total = 0
@@ -43,7 +42,6 @@ except:
 
 if fhandle:
     for line in fhandle:
-        # pdb.set_trace()
         list_o_nums = re.findall(r'[0-9]+', line)
         if len(list_o_nums) < 1 : continue
         for num in list_o_nums:
