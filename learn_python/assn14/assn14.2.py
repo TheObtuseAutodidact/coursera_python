@@ -32,3 +32,18 @@ Make sure to retreive the data from the URL specified above and not the normal G
 import pdb
 import urllib
 import json
+
+serviceurl = "http://python-data.dr-chuck.net/geojson?"
+
+while True:
+
+    data = raw_input("Enter location: ")
+    if len(data) < 1: break
+
+    url = serviceurl + urllib.urlencode({ 'sensor':'false', 'address': data })
+    print "Retrieving", url
+    opened_file = urllib.urlopen(url)
+    response = opened_file.read()
+    js = json.loads(str(response))
+    print "Retrieved", len(response), "characters"
+    print js['results'][0]['place_id']
